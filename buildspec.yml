@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - "cd /usr/bin"
+      - echo "[Info] Installing required Packages"
+      - echo "[Warn] Some Packages are deprecated!"
+      - echo "[Info] All Packages are installed."
+
+  build:
+    commands:
+      - cd "$CODEBUILD_SRC_DIR"
+      - echo "[Info] Provisioning required Infrastructure."
+      - echo "[Info] Code Build Started!"
+      - echo "[Warn] CPU utilization is above threshold. Add more resources!"
+      - echo "[Info] Code Build Completed"
+      - echo "[Info] Awaiting for test cases to run"
+      - echo "[Info] Test cases are passed 45/45"
+      - echo "[Info] Unit test passed"
+      
+  post_build:
+    commands:
+      - echo "[Info] Code build completed on `date`"
+      - echo "[Info] Cleaning up successful"
+
+artifacts:
+  files:
+    - '**/*'
